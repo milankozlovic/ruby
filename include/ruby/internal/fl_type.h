@@ -62,7 +62,6 @@
 #define FL_TAINT        RBIMPL_CAST((VALUE)RUBY_FL_TAINT)                /**< @old{RUBY_FL_TAINT} */
 #define FL_SHAREABLE    RBIMPL_CAST((VALUE)RUBY_FL_SHAREABLE)            /**< @old{RUBY_FL_SHAREABLE} */
 #define FL_UNTRUSTED    RBIMPL_CAST((VALUE)RUBY_FL_UNTRUSTED)            /**< @old{RUBY_FL_UNTRUSTED} */
-#define FL_EXIVAR       RBIMPL_CAST((VALUE)RUBY_FL_EXIVAR)               /**< @old{RUBY_FL_EXIVAR} */
 #define FL_FREEZE       RBIMPL_CAST((VALUE)RUBY_FL_FREEZE)               /**< @old{RUBY_FL_FREEZE} */
 
 #define FL_USHIFT       RBIMPL_CAST((VALUE)RUBY_FL_USHIFT)               /**< @old{RUBY_FL_USHIFT} */
@@ -286,18 +285,12 @@ ruby_fl_type {
     */
     RUBY_FL_UNUSED9  = (1<<9),
 
-    /**
-     * This flag has something to do with instance variables.  3rd parties need
-     * not  know, but  there are  several ways  to store  an object's  instance
-     * variables.   Objects  with this  flag  use  so-called "generic"  backend
-     * storage.  This  distinction is purely an  implementation detail.  People
-     * need not be aware of this working behind-the-scene.
-     *
-     * @internal
-     *
-     * As of writing everything except ::RObject and RModule use this scheme.
-     */
-    RUBY_FL_EXIVAR       = (1<<10),
+   /**
+    * This flag is no longer in use
+    *
+    * @internal
+    */
+    RUBY_FL_UNUSED10 = (1<<10),
 
     /**
      * This flag has something to do with data immutability.  When this flag is
@@ -399,7 +392,7 @@ enum {
 # pragma deprecated(RUBY_FL_DUPPED)
 #endif
 
-    = (int)RUBY_T_MASK | (int)RUBY_FL_EXIVAR
+    = (int)RUBY_T_MASK
 };
 
 #undef RBIMPL_HAVE_ENUM_ATTRIBUTE
